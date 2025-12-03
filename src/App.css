@@ -1,0 +1,280 @@
+/**
+ * @fileoverview Main Application Styles
+ * @file src/App.css
+ * @description Comprehensive stylesheet for the Assembly: Endgame word guessing game.
+ *              Contains all component-specific styles organized by functionality.
+ *              Implements a dark theme with custom color schemes for each game element.
+ */
+
+/* ==================== Global Styles ==================== */
+
+/**
+ * Apply box-sizing border-box to all elements for consistent sizing
+ */
+* {
+  box-sizing: border-box;
+}
+
+/**
+ * Body styles - Dark theme with centered content
+ */
+body {
+  margin: 0;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  background-color: #262626;
+  color: #D9D9D9;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==================== Game Header Styles ==================== */
+
+/**
+ * Header container - Contains game title and description
+ */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/**
+ * Game title styling
+ */
+header > h1 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #F9F4DA;
+}
+
+/**
+ * Game description text styling
+ */
+header > p {
+  margin: 0 auto;
+  font-size: 0.875rem;
+  max-width: 350px;
+  color: #8E8E8E;
+}
+
+/* ==================== Game Status Styles ==================== */
+
+/**
+ * Base game status section - Used for win, lose, and farewell messages
+ * Default styling is for win state (green background)
+ */
+section.game-status {
+  background-color: #10A95B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #F9F4DA;
+  border-radius: 4px;
+  margin-block: 30px;
+  padding-block: 5px;
+}
+
+/**
+ * Lost state styling - Red background for defeat message
+ */
+section.game-status.lost {
+  background-color: #BA2A2A;
+}
+
+/**
+ * Farewell message styling - Purple background with dashed border
+ * Shown when a programming language is lost due to wrong guess
+ */
+section.game-status.farewell {
+  background: #7A5EA7;
+  padding-block: 15px;
+  border: 1px dashed #323232; /* Fixed typo: was 1ps */
+}
+
+/**
+ * Paragraph text within game status sections
+ */
+section.game-status > p {
+  margin: 0;
+}
+
+/**
+ * Heading text within game status sections
+ */
+section.game-status > h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+/**
+ * Farewell text specific styling
+ */
+section.game-status > p.farewell-text {
+  margin: 0;
+}
+
+/* ==================== Language List Styles ==================== */
+
+/**
+ * Language list container - Displays all programming languages
+ */
+.language-list {
+  max-width: 266px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  justify-content: center;
+  align-items: center;
+}
+
+/**
+ * Individual language item styling
+ * Each language has custom background and text colors
+ */
+.language-list > li {
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 4.5px;
+  font-weight: 500;
+  position: relative;
+}
+
+/**
+ * Lost language overlay - Shows skull emoji when language is lost
+ * Creates a semi-transparent dark overlay with skull emoji centered
+ */
+.language-list > li.lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* ==================== Word Display Styles ==================== */
+
+/**
+ * Word container - Holds the letters of the word being guessed
+ */
+.word-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+}
+
+/**
+ * Individual letter container within word display
+ * Each letter is shown in a box with bottom border
+ */
+.word-container > span {
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background: #323232;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  color: #F9F4DA;
+  border-bottom: 1px solid #F9F4DA;
+}
+
+/**
+ * Failed state styling - Red text for unguessed letters when game is lost
+ */
+.word-container > span.failed b {
+  color: #EC5D49;
+}
+
+/* ==================== Keyboard Styles ==================== */
+
+/**
+ * Keyboard container - Holds all alphabet buttons
+ */
+.alphabet-container {
+  max-width: 480px;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+/**
+ * Individual alphabet button - Default yellow styling
+ */
+.alphabet-container > button.alphabet-button {
+  display: block;
+  padding: 0;
+  text-align: center;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  background: #FCBA29;
+  color: #1E1E1E;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #D7D7D7;
+}
+
+/**
+ * Disabled button state - Reduced opacity when game is over
+ */
+.alphabet-container > button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/**
+ * New Game button - Blue button to restart the game
+ */
+.alphabet-container > button.new-game-button {
+  display: block;
+  margin-top: 30px;
+  padding: 0;
+  text-align: center;
+  line-height: 40px;
+  width: 280px;
+  height: 40px;
+  background: #2D519F;
+  color: #F9F4DA;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #D7D7D7;
+}
+
+/**
+ * Correct guess button styling - Green background
+ * Applied when a guessed letter is in the word
+ */
+.alphabet-container > button.correct {
+  background: #10A95B;
+  border: 1px solid #D7D7D7;
+}
+
+/**
+ * Wrong guess button styling - Red background
+ * Applied when a guessed letter is not in the word
+ */
+.alphabet-container > button.wrong {
+  background: #EC5D49;
+  border: 1px solid #D7D7D7;
+}
