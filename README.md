@@ -22,6 +22,10 @@ A word guessing game built with React where players must guess hidden words with
 
 **Assembly: Endgame** is an interactive word guessing game that combines the classic Hangman gameplay with a programming theme. Players are challenged to guess a hidden word by selecting letters, but beware—each wrong guess costs you a programming language! Your goal is to guess the word before all 8 programming languages are lost to Assembly.
 
+### ScreenShot
+![](screenShot.png)
+
+
 ### Concept
 
 The game presents a unique twist on the traditional word guessing game:
